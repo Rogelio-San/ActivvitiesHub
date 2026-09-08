@@ -1,1 +1,1 @@
-# ActivvitiesHub
+# EventsHub
