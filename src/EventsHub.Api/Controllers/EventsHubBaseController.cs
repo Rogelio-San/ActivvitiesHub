@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsHub.Api.Controllers
@@ -6,6 +7,10 @@ namespace EventsHub.Api.Controllers
     [ApiController]
     public class EventsHubBaseController : ControllerBase
     {
-        
+        private IMediator? _mediator;
+
+        protected IMediator Mediator => 
+            _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>()
+                ?? throw new InvalidOperationException("IMediator service is not registered.");
     }
 }
