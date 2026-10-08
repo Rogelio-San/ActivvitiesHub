@@ -1,7 +1,12 @@
-using System.Runtime.CompilerServices;
 using EventsHub.Api.Controllers;
+using EventsHub.Application.Events.Queries;
+using EventsHub.Domain;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace EventsHub.UnitTests.Controllers;
 
@@ -9,11 +14,31 @@ namespace EventsHub.UnitTests.Controllers;
 public class EventsControllerTests
 {
     private EventsController _eventsController;
+    private ServiceProvider _serviceProvider;
 
     [SetUp]
     public void Setup()
     {
-        _eventsController = new EventsController(GlobalTestSetup.AppDbContext);
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.AddSingleton(GlobalTestSetup.AppDbContext);
+        services.AddMediatR(options =>
+            options.RegisterServicesFromAssemblyContaining<GetEventList.Handler>());
+        _serviceProvider = services.BuildServiceProvider();
+
+        _eventsController = new EventsController
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext { RequestServices = _serviceProvider }
+            }
+        };
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _serviceProvider.Dispose();
     }
 
     [Test]
@@ -22,7 +47,7 @@ public class EventsControllerTests
         // Arrange
         var expectedCount = await GlobalTestSetup.AppDbContext.Events.CountAsync();
         // Act
-        var result = await _eventsController.GetEventsAsync();
+        var result = await _eventsController.GetEventsAsync(CancellationToken.None);
         // Assert
         Assert.That(result.Value, Is.Not.Null);
         Assert.That(result.Value, Has.Count.EqualTo(expectedCount));
@@ -45,21 +70,14 @@ public class EventsControllerTests
     }
 
     [Test]
-    public async Task GetEventDetailAsync_WhenEventDoesntExist_ReturnsNotFound()
+    public void GetEventDetailAsync_WhenEventDoesntExist_ThrowsNotFoundException()
     {
         var nonExistentId = Guid.NewGuid().ToString();
 
-        var result = await _eventsController.GetEventDetailAsync(nonExistentId);
-        
-        Assert.That(result.Result, Is.InstanceOf<NotFoundObjectResult>());
+        var exception = Assert.ThrowsAsync<Exception>(async () =>
+            await _eventsController.GetEventDetailAsync(nonExistentId));
 
-        var notFoundResult = (NotFoundObjectResult)result.Result;
-
-        Assert.Multiple(() =>
-        {
-            Assert.That(notFoundResult.Value, Is.EqualTo("The event was not found"));
-            Assert.That(notFoundResult.StatusCode, Is.EqualTo(404));
-        });
+        Assert.That(exception!.Message, Is.EqualTo("Activity not found"));
     }
 }
  
