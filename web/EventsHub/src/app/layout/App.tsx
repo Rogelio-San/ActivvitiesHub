@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useState } from "react"
-import { List, ListItem, ListItemText, Typography } from "@mui/material";
+import {useEffect, useState } from "react"
+import { CssBaseline, List, ListItem, ListItemText } from "@mui/material";
 import axios from "axios";
+import NavBar from "./NavBar";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -13,10 +14,9 @@ function App() {
   }, []);
 
   return (
-    <Fragment> 
-      <Typography variant="h3" style={{ color: "coral" }}>
-        Events Hub
-      </Typography>
+    <>
+    <CssBaseline /> 
+      <NavBar></NavBar>
       <List>
         {activities.map((activity: Activity) => (
           <ListItem key={activity.id}>
@@ -24,7 +24,7 @@ function App() {
           </ListItem>
         ))}
       </List>
-    </Fragment>
+    </>
   )
 }
 
