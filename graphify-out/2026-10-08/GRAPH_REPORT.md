@@ -1,28 +1,28 @@
 # Graph Report - EventsHub  (2026-10-08)
 
 ## Corpus Check
-- 52 files · ~9,407 words
+- 86 files · ~67,425 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 7 file(s) not represented in the graph (top: (none) 4, .css 2, .nswag 1)
+- Unclassified: 11 file(s) not represented in the graph (top: (none) 8, .css 2, .nswag 1)
 
 ## Summary
-- 436 nodes · 636 edges · 28 communities (21 shown, 7 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.87)
+- 529 nodes · 751 edges · 42 communities (28 shown, 14 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f8d54d33`
+- Built from commit: `0601eb8d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - EventsRpcClient
 - Event
-- EventsHub.UniTests.csproj
-- EventsHub.Persistence
+- EventsHub.Domain.csproj
+- IRequest
 - EventsHubBaseController
-- 20260901012910_InitialCreate.Designer.cs
-- EventsController
+- EventsControllerTests.cs
+- .GetEventsAsync
 - compilerOptions
 - devDependencies
 - Event
@@ -33,7 +33,7 @@
 - EventsHub.OpenApi
 - dependencies
 - WeatherForecast
-- GlobalTestSetup
+- AppDbContext
 - eslint.config.js
 - vite.config.ts
 - scripts
@@ -44,59 +44,68 @@
 - .claude/CLAUDE.md
 - README.md
 - index.d.ts
+- Handler
+- CustomMapperTests
+- ADDED Requirements
+- Requirements
+- Command
+- Handler
+- Proposal
+- AppDbContextModelSnapshot
+- Handler
 
 ## God Nodes (most connected - your core abstractions)
-1. `Event` - 25 edges
+1. `Event` - 24 edges
 2. `EventsRpcClient` - 20 edges
 3. `WeatherForecastRpcClient` - 19 edges
 4. `compilerOptions` - 18 edges
 5. `ApiException` - 16 edges
 6. `compilerOptions` - 15 edges
-7. `AppDbContext` - 14 edges
-8. `Event` - 13 edges
-9. `EventsHub.Persistence` - 11 edges
-10. `EventsController` - 9 edges
+7. `CustomMapperTests` - 14 edges
+8. `AppDbContext` - 14 edges
+9. `Event` - 13 edges
+10. `Handler` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Step 3: Create `nswag/EventsHub.nswag` (checked-in codegen config)` --references--> `ApiException`  [INFERRED]
   docs/OpenApi 1.md → src/src/EventsHub.OpenApi/Generated/EventsHubRpcClient.generated.cs
-- `Step 1: Create `src/EventsHub.OpenApi/` (the standalone doc-generation host)` --references--> `WeatherForecastController`  [INFERRED]
-  docs/OpenApi 1.md → src/EventsHub.Api/Controllers/WeatherForecastController.cs
-- `GlobalTestSetup` --references--> `AppDbContext`  [EXTRACTED]
-  tests/EventsHub.UnitTests/GlobalTestSetup.cs → src/EventsHub.Persistence/AppDbContext.cs
-- `EventsControllerTests` --references--> `EventsController`  [EXTRACTED]
-  tests/EventsHub.UnitTests/Controllers/EventsControllerTests.cs → src/EventsHub.Api/Controllers/EventsController.cs
-- `EventsController` --inherits--> `EventsHubBaseController`  [EXTRACTED]
-  src/EventsHub.Api/Controllers/EventsController.cs → src/EventsHub.Api/Controllers/EventsHubBaseController.cs
+- `Context` --references--> `AppDbContext`  [INFERRED]
+  openspec/changes/archive/2026-10-08-replace-automapper-with-custom-mapper/design.md → src/EventsHub.Persistence/AppDbContext.cs
+- `Replace AutoMapper end to end` --references--> `Handler`  [INFERRED]
+  openspec/changes/archive/2026-10-08-replace-automapper-with-custom-mapper/design.md → src/EventsHub.Application/Events/Commands/EditEvent.cs
+- `3. Integrate the custom mapper` --references--> `Handler`  [INFERRED]
+  openspec/changes/archive/2026-10-08-replace-automapper-with-custom-mapper/tasks.md → src/EventsHub.Application/Events/Commands/EditEvent.cs
+- `Context` --references--> `Handler`  [INFERRED]
+  openspec/changes/archive/2026-10-08-replace-automapper-with-custom-mapper/design.md → src/EventsHub.Application/Events/Commands/EditEvent.cs
 
 ## Import Cycles
 - None detected.
 
-## Communities (28 total, 7 thin omitted)
+## Communities (42 total, 14 thin omitted)
 
 ### Community 0 - "EventsRpcClient"
-Cohesion: 0.07
+Cohesion: 0.08
 Nodes (20): EventsHub.OpenApi.Client, ApiException, Headers, Response, Result, StatusCode, DateFormatConverter, EventsRpcClient (+12 more)
 
 ### Community 1 - "Event"
-Cohesion: 0.06
-Nodes (26): Command, Event, CreateEvent, Handler, Handler, Command, Event, EditEvent (+18 more)
+Cohesion: 0.17
+Nodes (11): Event, Category, City, Date, Description, Id, isCancelled, Latitude (+3 more)
 
-### Community 2 - "EventsHub.UniTests.csproj"
+### Community 2 - "EventsHub.Domain.csproj"
 Cohesion: 0.07
-Nodes (26): AutoMapper (13.0.1), coverlet.collector (6.0.4), MediatR (14.2.0), Microsoft.AspNetCore.Mvc.NewtonsoftJson (10.0.11), Microsoft.AspNetCore.OpenApi (10.0.11), Microsoft.EntityFrameworkCore.Design (10.0.11), Microsoft.EntityFrameworkCore.Sqlite (10.0.11), Microsoft.NET.Test.Sdk (17.14.0) (+18 more)
+Nodes (26): EventsHub.UnitTests.Core, net10.0, coverlet.collector (6.0.4), MediatR (14.2.0), Microsoft.AspNetCore.Mvc.NewtonsoftJson (10.0.11), Microsoft.AspNetCore.OpenApi (10.0.11), Microsoft.EntityFrameworkCore.Design (10.0.11), Microsoft.EntityFrameworkCore.Sqlite (10.0.11) (+18 more)
 
-### Community 3 - "EventsHub.Persistence"
-Cohesion: 0.11
-Nodes (13): EventsHub.Domain, EventsHub.Application.Events.Queries, EventsHub.Application.Events.Commands, EventsHub.Persistence, EventsHub.Application.Core, MappingProfiles, Command, Id (+5 more)
+### Community 3 - "IRequest"
+Cohesion: 0.20
+Nodes (9): Command, Event, CreateEvent, Command, Id, DeleteEvent, GetEventDetails, Query (+1 more)
 
 ### Community 4 - "EventsHubBaseController"
-Cohesion: 0.08
-Nodes (14): EventsHub.Api.Controllers, EventsHub.UnitTests.Controllers, Current state on this branch, Manual setup — OpenAPI doc generation + typed client for the EventsHub API, Part 1 — Manually scaffold the pieces, Part 2 — Populate the generated content, Step 1: Create `src/EventsHub.OpenApi/` (the standalone doc-generation host), Step 2: Create `openapi/` (generated output folder) (+6 more)
+Cohesion: 0.11
+Nodes (12): Current state on this branch, Manual setup — OpenAPI doc generation + typed client for the EventsHub API, Part 1 — Manually scaffold the pieces, Part 2 — Populate the generated content, Step 1: Create `src/EventsHub.OpenApi/` (the standalone doc-generation host), Step 2: Create `openapi/` (generated output folder), Step 3: Create `nswag/EventsHub.nswag` (checked-in codegen config), Step 4: Register the NSwag CLI as a local tool (+4 more)
 
-### Community 5 - "20260901012910_InitialCreate.Designer.cs"
-Cohesion: 0.10
-Nodes (4): EventsHub.Persistence.Migrations, EventsHub.UnitTests, InitialCreate, AppDbContextModelSnapshot
+### Community 5 - "EventsControllerTests.cs"
+Cohesion: 0.06
+Nodes (11): EventsHub.Domain, EventsHub.Persistence.Migrations, EventsHub.UnitTests.Events.Commands, EventsHub.Application.Events.Queries, EventsHub.Api.Controllers, EventsHub.Application.Events.Commands, EventsHub.UnitTests, EventsHub.Persistence (+3 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.10
@@ -138,6 +147,10 @@ Nodes (9): dependencies, axios, @emotion/react, @emotion/styled, @fontsource/rob
 Cohesion: 0.25
 Nodes (6): EventsHub.Api, WeatherForecast, Date, Summary, TemperatureC, TemperatureF
 
+### Community 17 - "AppDbContext"
+Cohesion: 0.16
+Nodes (5): AppDbContext, Events, DbInitializer, GlobalTestSetup, AppDbContext
+
 ### Community 18 - "eslint.config.js"
 Cohesion: 0.29
 Nodes (6): eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, typescript-eslint
@@ -158,25 +171,49 @@ Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScrip
 Cohesion: 0.50
 Nodes (3): devDependencies, vite-plugin-mkcert, vite-plugin-mkcert
 
+### Community 28 - "Handler"
+Cohesion: 0.07
+Nodes (19): Context, Decisions, Design, Goals / Non-Goals, Migration Plan, Profiles are registered explicitly at the composition root, Profiles contain typed mapping delegates, Replace AutoMapper end to end (+11 more)
+
+### Community 29 - "CustomMapperTests"
+Cohesion: 0.15
+Nodes (13): EventMappingProfile, CustomMapperTests, DuplicateTestMappingProfile, FutureDestination, Label, FutureMappingProfile, FutureSource, Name (+5 more)
+
+### Community 30 - "ADDED Requirements"
+Cohesion: 0.18
+Nodes (10): ADDED Requirements, Purpose, Requirement: Mapping profiles define supported type pairs, Requirement: Mapping updates an existing destination, Requirement: Unconfigured mappings fail clearly, Scenario: A future profile is registered, Scenario: A registered profile provides a mapping, Scenario: Edit an existing event (+2 more)
+
+### Community 31 - "Requirements"
+Cohesion: 0.18
+Nodes (10): object-mapping Specification, Purpose, Requirement: Mapping profiles define supported type pairs, Requirement: Mapping updates an existing destination, Requirement: Unconfigured mappings fail clearly, Requirements, Scenario: A future profile is registered, Scenario: A registered profile provides a mapping (+2 more)
+
+### Community 33 - "Handler"
+Cohesion: 0.32
+Nodes (3): GetEventList, Handler, Query
+
+### Community 34 - "Proposal"
+Cohesion: 0.25
+Nodes (7): Capabilities, Impact, Modified Capabilities, New Capabilities, Proposal, What Changes, Why
+
 ## Knowledge Gaps
-- **179 isolated node(s):** `Mediator`, `net10.0`, `Microsoft.AspNetCore.OpenApi (10.0.11)`, `Microsoft.EntityFrameworkCore.Design (10.0.11)`, `Microsoft.NET.Sdk.Web` (+174 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 237 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **206 isolated node(s):** `Goals / Non-Goals`, `Profiles contain typed mapping delegates`, `The mapper is profile-agnostic`, `Profiles are registered explicitly at the composition root`, `Risks / Trade-offs` (+201 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 285 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What connects `Mediator`, `net10.0`, `Microsoft.AspNetCore.OpenApi (10.0.11)` to the rest of the system?**
-  _179 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `ApiException` connect `EventsRpcClient` to `EventsHubBaseController`, `.GetEventsAsync`?**
+  _High betweenness centrality (0.154) - this node is a cross-community bridge._
+- **What connects `Goals / Non-Goals`, `Profiles contain typed mapping delegates`, `The mapper is profile-agnostic` to the rest of the system?**
+  _206 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `EventsRpcClient` be split into smaller, more focused modules?**
-  _Cohesion score 0.07373271889400922 - nodes in this community are weakly interconnected._
-- **Should `Event` be split into smaller, more focused modules?**
-  _Cohesion score 0.05580693815987934 - nodes in this community are weakly interconnected._
-- **Should `EventsHub.UniTests.csproj` be split into smaller, more focused modules?**
-  _Cohesion score 0.07386363636363637 - nodes in this community are weakly interconnected._
-- **Should `EventsHub.Persistence` be split into smaller, more focused modules?**
-  _Cohesion score 0.10752688172043011 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07562136435748282 - nodes in this community are weakly interconnected._
+- **Why does `Event` connect `Event` to `Handler`, `IRequest`, `Handler`, `EventsControllerTests.cs`, `.GetEventsAsync`, `AppDbContext`?**
+  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+- **Should `EventsHub.Domain.csproj` be split into smaller, more focused modules?**
+  _Cohesion score 0.07130124777183601 - nodes in this community are weakly interconnected._
+- **Why does `EventsControllerTests` connect `.GetEventsAsync` to `EventsControllerTests.cs`?**
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
 - **Should `EventsHubBaseController` be split into smaller, more focused modules?**
-  _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
-- **Should `20260901012910_InitialCreate.Designer.cs` be split into smaller, more focused modules?**
-  _Cohesion score 0.09788359788359788 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

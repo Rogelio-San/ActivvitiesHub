@@ -227,22 +227,16 @@
     "ast_hash": "62784e7f997037a71956b6c89911f27d",
     "semantic_hash": ""
   },
-  "web/EventsHub/src/App.tsx": {
-    "mtime": 1789396722.564252,
-    "seen": 1791476337.5586672,
-    "ast_hash": "9bd30529220ed0381fe1e79eca78e8f7",
-    "semantic_hash": ""
-  },
   "web/EventsHub/src/lib/types/index.d.ts": {
-    "mtime": 1789396722.564252,
-    "seen": 1791476337.558669,
+    "mtime": 1791483701.9477923,
+    "seen": 1791487195.2496018,
     "ast_hash": "e555b49d0f2f8854d95f272b4c7405dd",
     "semantic_hash": ""
   },
   "web/EventsHub/src/main.tsx": {
-    "mtime": 1789396722.571523,
-    "seen": 1791476337.5586703,
-    "ast_hash": "253dfae080a3cf052a2cd4edbafd042a",
+    "mtime": 1791484479.719671,
+    "seen": 1791487195.2496028,
+    "ast_hash": "bb41aba447e81308a90c7a0f4314df79",
     "semantic_hash": ""
   },
   "web/EventsHub/tsconfig.app.json": {
@@ -375,18 +369,6 @@
     "mtime": 1789396722.564252,
     "seen": 1791476337.5587041,
     "ast_hash": "2a4f4988e8996f1888a2e9a7495dcc69",
-    "semantic_hash": ""
-  },
-  "web/EventsHub/public/favicon.svg": {
-    "mtime": 1788974791.6866755,
-    "seen": 1791476337.5587056,
-    "ast_hash": "7e840862161341271697daa99a40d76b",
-    "semantic_hash": ""
-  },
-  "web/EventsHub/public/icons.svg": {
-    "mtime": 1788974791.6866755,
-    "seen": 1791476337.5587072,
-    "ast_hash": "21c7473c592c67dc87223d49892c8f0a",
     "semantic_hash": ""
   },
   "web/EventsHub/src/assets/hero.png": {
@@ -627,6 +609,84 @@
     "mtime": 1791481431.430578,
     "seen": 1791481557.019476,
     "ast_hash": "f0ca77296b894cbc3a35c845658906b2",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/app/layout/App.tsx": {
+    "mtime": 1792423735.7796152,
+    "seen": 1792424054.5600479,
+    "ast_hash": "395560ab986fb2a65304c63757e6489f",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/app/layout/NavBar.tsx": {
+    "mtime": 1791917726.7568626,
+    "seen": 1791919213.7994332,
+    "ast_hash": "3510fbbfd2d13c09441cdbe5d7f59670",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/features/activities/dashboard/ActivityCard.tsx": {
+    "mtime": 1792423671.5018585,
+    "seen": 1792424054.5600512,
+    "ast_hash": "a1cf78efb68eb0d8432a0490055826f3",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/features/activities/dashboard/ActivityDashboard.tsx": {
+    "mtime": 1792423712.6143508,
+    "seen": 1792424054.560053,
+    "ast_hash": "fc1fb5818c39c3bc85dd43f86747df9c",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/features/activities/dashboard/ActivityList.tsx": {
+    "mtime": 1792423697.4761298,
+    "seen": 1792424054.560054,
+    "ast_hash": "0881cb4bdda0376cd47fccd88f8c3634",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/features/activities/details/ActivityDetail.tsx": {
+    "mtime": 1791918310.7597303,
+    "seen": 1791919213.7994373,
+    "ast_hash": "e783e90c82f3d5ea43ffae2b73ee1727",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/culture.jpg": {
+    "mtime": 1791907586.3837938,
+    "seen": 1791911875.1502178,
+    "ast_hash": "31273b365ab4e0a0f891f5ee0f45f73e",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/drinks.jpg": {
+    "mtime": 1791907593.7364075,
+    "seen": 1791911875.1502197,
+    "ast_hash": "ffea5ad741e2fd2d742c086f3e500fd3",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/film.jpg": {
+    "mtime": 1791907599.9973705,
+    "seen": 1791911875.1502216,
+    "ast_hash": "e4db44a0f9163b07e365e2d26a7989b5",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/food.jpg": {
+    "mtime": 1791907605.4771943,
+    "seen": 1791911875.1502233,
+    "ast_hash": "2c5b0d2c582b1b8eb79e1fdb71c2f8aa",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/music.jpg": {
+    "mtime": 1791907612.7309759,
+    "seen": 1791911875.150225,
+    "ast_hash": "12c0ff4530a5149444a4dc3f6583e67b",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/public/images/categoryImages/travel.jpg": {
+    "mtime": 1791907617.9543633,
+    "seen": 1791911875.1502268,
+    "ast_hash": "399fc9c8eec263f231d216d6f89dfad0",
+    "semantic_hash": ""
+  },
+  "web/EventsHub/src/features/activities/form/ActivityForm.tsx": {
+    "mtime": 1792422378.8101408,
+    "seen": 1792423321.68309,
+    "ast_hash": "461500de9a52331cd996eb3efe46a2ce",
     "semantic_hash": ""
   }
 }
