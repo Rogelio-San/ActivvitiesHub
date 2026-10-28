@@ -15,8 +15,8 @@ namespace EventsHub.Domain
         public bool isCancelled { get; set; }
         public required string City { get; set; }
         public required string Venue { get; set; }
-        public required string Latitude { get; set; }
-        public required string Longitude { get; set; }
+        public string Latitude { get; set; } = string.Empty;
+        public string Longitude { get; set; } = string.Empty;
 
     }
 }
