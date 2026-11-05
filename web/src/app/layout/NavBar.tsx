@@ -10,11 +10,7 @@ import {
   MenuList,
 } from '@mui/material'
 
-type Props = {
-  openForm: () => void
-}
-
-export default function NavBar({ openForm }: Props) {
+export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -35,24 +31,18 @@ export default function NavBar({ openForm }: Props) {
               </MenuItem>
             </MenuList>
             <MenuList disablePadding sx={{ display: 'flex' }}>
-              <MenuItem
-                sx={{ fontSize: '1.25rem', textTransform: 'uppercase' }}
-              >
+              <MenuItem sx={{ fontSize: '1.2rem', textTransform: 'uppercase' }}>
                 Activities
               </MenuItem>
-              <MenuItem
-                sx={{ fontSize: '1.25rem', textTransform: 'uppercase' }}
-              >
+              <MenuItem sx={{ fontSize: '1.2rem', textTransform: 'uppercase' }}>
                 About
               </MenuItem>
-              <MenuItem
-                sx={{ fontSize: '1.25rem', textTransform: 'uppercase' }}
-              >
+              <MenuItem sx={{ fontSize: '1.2rem', textTransform: 'uppercase' }}>
                 Contact
               </MenuItem>
             </MenuList>
             <Button
-              onClick={openForm}
+              onClick={() => {}}
               size="large"
               variant="contained"
               color="warning"
