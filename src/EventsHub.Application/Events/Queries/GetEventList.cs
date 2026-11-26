@@ -8,9 +8,9 @@ namespace EventsHub.Application.Events.Queries
 {
     public class GetEventList
     {
-        public class Query : IRequest<List<Event>> {}
+        public class Query : IRequest<List<Event>> { }
 
-        public class Handler (AppDbContext context, ILogger<GetEventList> logger): IRequestHandler<Query, List<Event>>
+        public class Handler(AppDbContext context, ILogger<GetEventList> logger) : IRequestHandler<Query, List<Event>>
         {
             public async Task<List<Event>> Handle(Query request, CancellationToken cancellationToken)
             {
@@ -20,14 +20,14 @@ namespace EventsHub.Application.Events.Queries
                     for (int i = 0; i < 10; i++)
                     {
                         cancellationToken.ThrowIfCancellationRequested();
-                        await Task.Delay(1, cancellationToken); 
+                        await Task.Delay(1, cancellationToken);
                         logger.LogInformation($"Task {i} has completed.");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     logger.LogInformation($"Task was cancelled");
-                    
+
                 }
                 return await context.Events.ToListAsync(cancellationToken);
             }

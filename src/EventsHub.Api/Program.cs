@@ -8,12 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext> (opt =>
+builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection"));
-}); 
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddCors();
-builder.Services.AddMediatR(opt => 
+builder.Services.AddMediatR(opt =>
     opt.RegisterServicesFromAssemblyContaining<GetEventList.Handler>()
 );
 builder.Services.AddSingleton<MappingProfile, EventMappingProfile>();
@@ -29,7 +29,7 @@ app.UseCors(opt => opt
 
 if (app.Environment.IsDevelopment())
 {
-    
+
 }
 
 using var scope = app.Services.CreateScope();
